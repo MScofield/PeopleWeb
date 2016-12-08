@@ -27,44 +27,24 @@ public class Main {
             "/",
             ((request, response) -> {
 
-//                String previousIndexNum = request.queryParams("previousIndex");
-//                String nextIndexNum = request.queryParams("nextIndex");
-//                Arrays.asList(new Person[20]);
-
-                // = new ArrayList<>();
-                //= new ArrayList<>();
-//                int listLength = people.size();
-//                int upIndex;
-//                int downIndex;
                 String offsetString;
                 int offsetInt;
-
-//                String nextIndexString;
-//                String previousIndexString;
-
                 offsetString = request.queryParams("offset");
                 if (offsetString == null){
                     offsetString = "0";
 
                 }
-//                nextIndexString = request.queryParams("offset");
-//                previousIndexString = request.queryParams("offset");
+
 //                if (fromIndex >= listLength || toIndex <= 0 || fromIndex >= toIndex){
 //
 //                }
                 offsetInt = Integer.parseInt(offsetString);
-//                upIndex = Integer.parseInt(nextIndexString);
-//                downIndex = Integer.parseInt(previousIndexString);
                 List<Person> offsetList;
 //
 //                fromIndex = Math.max(0, fromIndex);
 //                toIndex = Math.min(listLength, toIndex);
 
                 offsetList = people.subList(offsetInt,(offsetInt + 20));
-
-
-                //offsetList = ArrayList<Person>(people.subList(downIndex, upIndex));
-                //shortList = Arrays.asList(new Person[20]);
 
 
                 HashMap peopleList = new HashMap();
@@ -76,6 +56,8 @@ public class Main {
             }),//request response
             new MustacheTemplateEngine()
             );//spark get
+
+        //new route to follow:
 //    Spark.get(
 //            "/person",
 //  String idString=request
