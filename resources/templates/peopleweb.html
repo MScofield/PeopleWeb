@@ -4,10 +4,15 @@
 {{#peopleArray}}
 {{last_name}}, {{first_name}}<br>
 {{/peopleArray}}
-<a href="/?offset={{previousIndex}}"> previous </a>
+{{#previousOffset}}
+<a href="/?offset={{previousOffset}}"> previous </a>
+{{/previousOffset}}
 ,
-<a href="/?offset={{nextIndex}}"> next </a>
+{{#nextOffset}}
+<a href="/?offset={{nextOffset}}"> next </a>
+{{/nextOffset}}
 <br>
 </body>
 </html>
+
 
