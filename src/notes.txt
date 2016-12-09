@@ -1,3 +1,1 @@
 !"/person?id={{id}"
-!#prevOffset /prevOffset
-!#nextOffset /nextOffset

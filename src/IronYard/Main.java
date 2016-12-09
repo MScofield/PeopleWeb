@@ -60,11 +60,12 @@ public class Main {
         //new route to follow:
 //    Spark.get(
 //            "/person",
-//  String idString=request
-//        int Id parse
-//                Person person = null
-//                        for Person p : people) {
-//    if person p =
+//            ((request, response) -> {
+//  String idString = request.queryParams("id");
+//        int id = Integer.parseInt(idString);
+//                Person person = null;
+//                        for (Person p : people) {
+//    if Person p =
 //        }
 //    )
     }//main method
