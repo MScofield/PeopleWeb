@@ -1,8 +1,20 @@
 
-!personhtml
-!#person
-!name
-!email
-!country
-!address
-!/person
+<!DOCTYPE html>
+<html lang=""en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+</head>
+<body>
+
+{{#person}}
+
+Country:  {{country}}  <br>
+Name: {{first_name}} {{last_name}}<br>
+Email: {{email}}<br>
+IP Address:  {{ip_address}}<br>
+
+{{/person}}
+
+</body>
+</html>

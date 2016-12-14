@@ -50,23 +50,33 @@ public class Main {
                 HashMap peopleList = new HashMap();
                 peopleList.put("peopleArray", offsetList);
 
-                peopleList.put("nextOffset", (offsetInt + 20));
-                peopleList.put("previousOffset", (offsetInt +- 20));
+                if(offsetInt+21 < people.size()) {
+                    peopleList.put("nextOffset", offsetInt + 20);
+                }
+
+                if(offsetInt+-20 >= 0) {
+                    peopleList.put("previousOffset", (offsetInt + -20));
+                }
+
                 return new ModelAndView(peopleList, "peopleweb.html");
             }),//request response
             new MustacheTemplateEngine()
-            );//spark get
+    );//spark get
 
         //new route to follow:
-//    Spark.get(
-//            "/person",
-//            ((request, response) -> {
-//  String idString = request.queryParams("id");
-//        int id = Integer.parseInt(idString);
-//                Person person = null;
-//                        for (Person p : people) {
-//    if Person p =
-//        }
-//    )
-    }//main method
+    Spark.get(
+           "/person",
+            ((request, response) -> {
+                HashMap personHash = new HashMap<>();
+                String idString = request.queryParams("id");
+                int id = Integer.parseInt(idString);
+                Person personGet = people.get(id - 1);
+                personHash.put("person", personGet);
+                return new ModelAndView(personHash, "person.html");
+
+            }),//request response
+        new MustacheTemplateEngine()
+
+    ); //Spark.get
+  }//main method
 }//class main

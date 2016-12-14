@@ -2,8 +2,9 @@
 <body>
 
 {{#peopleArray}}
-{{last_name}}, {{first_name}}<br>
+<a href="/person?id={{id}}"> {{first_name}}&nbsp;{{last_name}}</a><br>
 {{/peopleArray}}
+
 {{#previousOffset}}
 <a href="/?offset={{previousOffset}}"> previous </a>
 {{/previousOffset}}
@@ -11,6 +12,7 @@
 {{#nextOffset}}
 <a href="/?offset={{nextOffset}}"> next </a>
 {{/nextOffset}}
+
 <br>
 </body>
 </html>
