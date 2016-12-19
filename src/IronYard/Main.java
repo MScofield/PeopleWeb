@@ -17,8 +17,10 @@ public class Main {
         while (csvRead.hasNext()){
             String individual = csvRead.nextLine();
             String[] attribute = individual.split("\\,");
-            Person personObject = new Person(attribute[0],attribute[1],attribute[2],attribute[3],attribute[4],attribute[5]);
-            people.add(personObject);
+            if (!"id".equals(attribute[0])) {
+                Person personObject = new Person(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], attribute[5]);
+                people.add(personObject);
+            }
         }//while
 
     Spark.init();
@@ -35,14 +37,8 @@ public class Main {
 
                 }
 
-//                if (fromIndex >= listLength || toIndex <= 0 || fromIndex >= toIndex){
-//
-//                }
                 offsetInt = Integer.parseInt(offsetString);
                 List<Person> offsetList;
-//
-//                fromIndex = Math.max(0, fromIndex);
-//                toIndex = Math.min(listLength, toIndex);
 
                 offsetList = people.subList(offsetInt,(offsetInt + 20));
 
@@ -63,15 +59,19 @@ public class Main {
             new MustacheTemplateEngine()
     );//spark get
 
-        //new route to follow:
     Spark.get(
            "/person",
             ((request, response) -> {
                 HashMap personHash = new HashMap<>();
                 String idString = request.queryParams("id");
                 int id = Integer.parseInt(idString);
-                Person personGet = people.get(id - 1);
-                personHash.put("person", personGet);
+                Person person = null;
+                for (Person p : people) {
+                    if(p.getId().equals(idString)){
+                        person = p;
+                    }
+                }
+                personHash.put("person", person);
                 return new ModelAndView(personHash, "person.html");
 
             }),//request response
