@@ -64,7 +64,6 @@ public class Main {
             ((request, response) -> {
                 HashMap personHash = new HashMap<>();
                 String idString = request.queryParams("id");
-                int id = Integer.parseInt(idString);
                 Person person = null;
                 for (Person p : people) {
                     if(p.getId().equals(idString)){
